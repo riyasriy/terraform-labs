@@ -8,8 +8,8 @@ tags     = "${var.tags}"
 
 resource "azurerm_public_ip" "PublicIP" {
   name                = "vpnGatewayPublicIp"
-  location            = "azurerm_resource_group.core.location"
-  resource_group_name = "azurerm_resource_group.core.name"
+  location            = "${azurerm_resource_group.core.location}"
+  resource_group_name = "${azurerm_resource_group.core.name}"
   allocation_method   = "Dynamic"
   tags                = "${azurerm_resource_group.core.tags}"
 
@@ -18,8 +18,8 @@ resource "azurerm_public_ip" "PublicIP" {
 
 resource "azurerm_virtual_network" "vnet" {
   name                = "Core"
-  location            = "azurerm_resource_group.core.location"
-  resource_group_name = "azurerm_resource_group.core.name"
+  location            = "${azurerm_resource_group.core.location}"
+  resource_group_name = "${azurerm_resource_group.core.name}"
   address_space       = ["10.0.0.0/16"]
   dns_servers         = ["1.1.1.1", "1.0.0.1"]
 
